@@ -5,25 +5,25 @@ A react Native module to enable location based services on Android and IOS.
 
 <img src="preview/previewAndroid.gif" width="200" /> <img src="preview/previewIOS.gif" width="193" />
 
-## Requirements
-- react-native >= 0.38.0
-- android buildToolsVersion 26.0.1
-- gradle build tools 2.3.3
+## This was tested with
+- react-native >= 0.57.5
+- android buildToolsVersion 27.0.3
+- gradle build tools 3.1.4
 
 
 ## Installation Android
 
-1. npm install react-native-location-switch
+1. npm install react-native-location-switch-pk
 
 2. add the following 2 lines to your <project>/android/settings.gradle file
    ```
    include ':react-native-location-switch'
-   project(':react-native-location-switch').projectDir = new File(settingsDir, '../node_modules/react-native-location-switch/android')
+   project(':react-native-location-switch').projectDir = new File(settingsDir, '../node_modules/react-native-location-switch-pk/android')
    ```
 
 3. add the following line to your <project>/android/app/build.gradle file
    ```
-   compile project(':react-native-location-switch')
+   implementation project(':react-native-location-switch')
    ```
 
 4. add the "LocationSwitchPackage" import into your MainApplication.java file:
@@ -57,11 +57,33 @@ A react Native module to enable location based services on Android and IOS.
     }
     ```
 
+## Post Installation Android
+
+After you have installed on android and you do the first build **you are going to see the following error**:
+```
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:preDebugBuild'.
+> Android dependency 'com.google.android.gms:play-services-base' has different version for the compile (11.0.0) and runtime (16.1.0) classpath. You should manually set the same version via DependencyResolution
+```
+
+In the error above, **it tells us that the runtime version for 'com.google.android.gms:play-services-base' is '16.1.0'**, so in order to solve this **we must add 16.1.0 as a forced choice in <project>/android/app/build.gradle** like this:
+```
+configurations.all {
+    resolutionStrategy {
+        force "com.google.android.gms:play-services-base:16.1.0"
+    }
+}
+```
+
+When you clean and build after this, it should just work.
+
 ## Installation IOS
 
 1. Open the project in xCode, left click on the Libraries folder -> Add files to ... and select 
    ```
-   ./node_modules/react-native-location-switch/ios/RNReactNativeLocationSwitch.xcodeproj
+   ./node_modules/react-native-location-switch-pk/ios/RNReactNativeLocationSwitch.xcodeproj
    ```
 
 2. Open the project -> Build Phases -> Link Binary With Libraries and select libRNReactNativeLocationSwitch.a
@@ -96,7 +118,7 @@ errorCallback | null | Is called when the user denies access to the location ser
 ```javascript
 import React, { Component } from 'react';
 import { AppRegistry, Text, View, TouchableOpacity, StyleSheet, Alert } from 'react-native';
-import LocationSwitch from 'react-native-location-switch';
+import LocationSwitch from 'react-native-location-switch-pk';
 
 const style = StyleSheet.create({
   container: {
