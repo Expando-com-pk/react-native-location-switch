@@ -10,28 +10,32 @@ A react Native module to enable location based services on Android and IOS.
 - android buildToolsVersion 27.0.3
 - gradle build tools 3.1.4
 
+## Installation
+
+```
+$ npm install react-native-location-switch-pk
+```
 
 ## Installation Android
 
-1. npm install react-native-location-switch-pk
 
-2. add the following 2 lines to your <project>/android/settings.gradle file
+1. add the following 2 lines to your <project>/android/settings.gradle file
    ```
    include ':react-native-location-switch'
    project(':react-native-location-switch').projectDir = new File(settingsDir, '../node_modules/react-native-location-switch-pk/android')
    ```
 
-3. add the following line to your <project>/android/app/build.gradle file
+2. add the following line to your <project>/android/app/build.gradle file
    ```
    implementation project(':react-native-location-switch')
    ```
 
-4. add the "LocationSwitchPackage" import into your MainApplication.java file:
+3. add the "LocationSwitchPackage" import into your MainApplication.java file:
    ```java
    import org.pweitz.reactnative.locationswitch.LocationSwitchPackage;
    ```
 
-5. add the "LocationSwitchPackage" into your MainApplication.java file (getPackages method):
+4. add the "LocationSwitchPackage" into your MainApplication.java file (getPackages method):
    ```java
     @Override
     protected List<ReactPackage> getPackages() {
@@ -43,12 +47,12 @@ A react Native module to enable location based services on Android and IOS.
     }
 
    ```
-6. add the "LocationSwitch" import into your MainActivity.java file:
+5. add the "LocationSwitch" import into your MainActivity.java file:
    ```java
    import org.pweitz.reactnative.locationswitch.LocationSwitch;
    ```
 
-7. add the following code into your MainActivity.java file:
+6. add the following code into your MainActivity.java file:
     ```java   
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
