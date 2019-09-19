@@ -1,5 +1,5 @@
 {
-  "name": "react-native-location-switch",
+  "name": "react-native-location-switch-pk",
   "version": "0.1.0",
   "author": "Philipp Weitz",
   "private": false,
@@ -7,17 +7,18 @@
   "nativePackage": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/philiWeitz/react-native-location-switch.git"
+    "url": "https://github.com/Expando-com-pk/react-native-location-switch"
   },
   "bugs": {
-    "url": "https://github.com/philiWeitz/react-native-location-switch/issues"
+    "url": "https://github.com/Expando-com-pk/react-native-location-switch/issues"
   },
   "keywords": [
     "react-native",
     "android",
     "ios",
     "library",
-    "location"
+    "location",
+    "switch"
   ],
   "peerDependencies": {
     "react-native": ">= 0.38.0"
